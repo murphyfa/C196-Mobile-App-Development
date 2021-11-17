@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="emurphy.c196">
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EMurphyC196">
+        <receiver android:name=".Notifier"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TermListActivity"
+            android:label="Term List"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.MainActivity" />
+        </activity>
+        <activity
+            android:name=".TermEditorActivity"
+            android:label="Term Editor"
+            android:parentActivityName=".TermListActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.TermListActivity" />
+        </activity>
+        <activity
+            android:name=".AssessmentEditorActivity"
+            android:label="Assessment Editor"
+            android:parentActivityName=".AssessmentListActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.AssessmentListActivity" />
+        </activity>
+        <activity
+            android:name=".AssessmentListActivity"
+            android:label="Assessment List"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.CourseListActivity" />
+        </activity>
+        <activity
+            android:name=".NoteEditorActivity"
+            android:label="Notes"
+            android:parentActivityName=".CourseEditorActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.CourseEditorActivity" />
+        </activity>
+        <activity
+            android:name=".NoteListActivity"
+            android:label="Notes"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.CourseEditorActivity" />
+        </activity>
+        <activity
+            android:name=".CourseEditorActivity"
+            android:label="Course Editor"
+            android:parentActivityName=".CourseListActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.CourseListActivity" />
+        </activity>
+        <activity
+            android:name=".CourseListActivity"
+            android:label="Course List"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.EMurphyC196.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emurphy.c196.TermListActivity" />
+        </activity>
+    </application>
+
+</manifest>
