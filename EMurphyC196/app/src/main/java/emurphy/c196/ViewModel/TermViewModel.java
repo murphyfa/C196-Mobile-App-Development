@@ -8,10 +8,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
-import java.util.Map;
 
 import emurphy.c196.Database.CourseEntity;
-import emurphy.c196.Database.CourseRepository;
 import emurphy.c196.Database.TermEntity;
 import emurphy.c196.Database.TermRepository;
 

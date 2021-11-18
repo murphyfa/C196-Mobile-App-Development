@@ -1,27 +1,15 @@
 package emurphy.c196;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import emurphy.c196.Adapter.TermAdapter;
-import emurphy.c196.Database.TermEntity;
 import emurphy.c196.ViewModel.TermViewModel;
 import emurphy.c196.databinding.ActivityTermsListBinding;
 

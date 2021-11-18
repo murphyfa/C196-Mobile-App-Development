@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import emurphy.c196.Database.CourseEntity;
-import emurphy.c196.Database.CourseTerm;
 import emurphy.c196.Database.TermEntity;
 import emurphy.c196.R;
 
@@ -47,7 +46,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         notifyDataSetChanged();
     }
 
-    public void setCoursesExtended(List<CourseEntity> courses, TermEntity term){
+    public void setCoursesExtended(List<CourseEntity> courses, TermEntity term) {
         this.courses = courses;
         this.term = term;
         notifyDataSetChanged();

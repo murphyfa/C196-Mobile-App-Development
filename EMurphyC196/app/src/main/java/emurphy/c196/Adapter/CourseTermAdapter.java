@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import emurphy.c196.Database.CourseTerm;
-import emurphy.c196.Database.CourseTerm;
-import emurphy.c196.Database.TermEntity;
 import emurphy.c196.R;
 
 public class CourseTermAdapter extends RecyclerView.Adapter<CourseTermAdapter.CourseTermViewHolder> {

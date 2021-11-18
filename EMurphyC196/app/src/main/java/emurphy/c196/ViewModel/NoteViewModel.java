@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import emurphy.c196.Database.AssessmentEntity;
 import emurphy.c196.Database.CourseEntity;
 import emurphy.c196.Database.NoteEntity;
 import emurphy.c196.Database.NoteRepository;
@@ -49,7 +48,7 @@ public class NoteViewModel extends AndroidViewModel {
         return noteRepository.getAllNotesForCourseLive(id);
     }
 
-    public CourseEntity getCourseById(long id){
+    public CourseEntity getCourseById(long id) {
         return noteRepository.getCourseById(id);
     }
 }

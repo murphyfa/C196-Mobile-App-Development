@@ -114,9 +114,11 @@
     </LinearLayout>
 
     <Spinner
+        style="@android:style/Widget.Holo.Light.Spinner"
         android:id="@+id/status_spinner"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="0.70"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="20dp"
@@ -148,6 +150,8 @@
         android:ems="10"
         android:hint="Instructor Phone"
         android:inputType="phone"
+        android:maxLines="1"
+        android:maxLength="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/course_instructor_name_text" />

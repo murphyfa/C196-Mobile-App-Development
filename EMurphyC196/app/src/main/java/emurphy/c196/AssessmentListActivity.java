@@ -22,7 +22,7 @@ public class AssessmentListActivity extends AppCompatActivity {
     private AssessmentViewModel assessmentViewModel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityAssessmentsListBinding.inflate(getLayoutInflater());
@@ -45,7 +45,7 @@ public class AssessmentListActivity extends AppCompatActivity {
         });
 
         binding.fab.setOnClickListener(view -> {
-            if (assessmentViewModel.getAllCourses().isEmpty()){
+            if (assessmentViewModel.getAllCourses().isEmpty()) {
                 Snackbar snackbar = Snackbar.make(binding.getRoot(), "You must add at least one course before adding assessments", BaseTransientBottomBar.LENGTH_LONG);
                 snackbar.show();
             } else {

@@ -22,7 +22,7 @@ public class CourseListActivity extends AppCompatActivity {
     private CourseViewModel courseViewModel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityCoursesListBinding.inflate(getLayoutInflater());
@@ -45,7 +45,7 @@ public class CourseListActivity extends AppCompatActivity {
         });
 
         binding.fab.setOnClickListener(view -> {
-            if (courseViewModel.getAllTerms().isEmpty()){
+            if (courseViewModel.getAllTerms().isEmpty()) {
                 Snackbar snackbar = Snackbar.make(binding.getRoot(), "You must add at least one term before adding courses", BaseTransientBottomBar.LENGTH_LONG);
                 snackbar.show();
             } else {

@@ -1,13 +1,11 @@
 package emurphy.c196.Database;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.core.util.Pair;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
-import java.util.Map;
 
 public class TermRepository {
     private TermDAO termDAO;
@@ -49,7 +47,7 @@ public class TermRepository {
         return new Pair<>(term, courses);
     }
 
-    public LiveData<List<CourseEntity>> getCoursesForTerm(long id){
+    public LiveData<List<CourseEntity>> getCoursesForTerm(long id) {
         return courseDAO.getAllCoursesForTermLive(id);
     }
 }

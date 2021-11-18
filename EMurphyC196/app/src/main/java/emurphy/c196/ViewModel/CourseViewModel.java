@@ -10,8 +10,8 @@ import java.util.List;
 
 import emurphy.c196.Database.AssessmentEntity;
 import emurphy.c196.Database.CourseEntity;
-import emurphy.c196.Database.CourseTerm;
 import emurphy.c196.Database.CourseRepository;
+import emurphy.c196.Database.CourseTerm;
 import emurphy.c196.Database.NoteEntity;
 import emurphy.c196.Database.TermEntity;
 import kotlin.Triple;
@@ -68,7 +68,7 @@ public class CourseViewModel extends AndroidViewModel {
         return courseRepository.getCourseWithAssessmentsAndNotes(id);
     }
 
-    public List<TermEntity> getAllTerms(){
+    public List<TermEntity> getAllTerms() {
         return courseRepository.getAllTerms();
     }
 }

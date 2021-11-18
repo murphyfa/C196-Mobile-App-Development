@@ -73,7 +73,7 @@ public class CourseRepository {
         return new Triple<>(course, assessments, notes);
     }
 
-    public List<TermEntity> getAllTerms(){
+    public List<TermEntity> getAllTerms() {
         return termDAO.getAllTerms();
     }
 }

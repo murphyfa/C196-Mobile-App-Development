@@ -1,9 +1,10 @@
 package emurphy.c196.Database;
 
-public class AssessmentCourse extends AssessmentEntity{
+public class AssessmentCourse extends AssessmentEntity {
     private String course_title;
 
-    public AssessmentCourse() {}
+    public AssessmentCourse() {
+    }
 
     public String getCourse_title() {
         return course_title;

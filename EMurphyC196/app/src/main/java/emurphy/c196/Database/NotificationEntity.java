@@ -10,7 +10,8 @@ public class NotificationEntity {
     private String type;
     private int entity_id;
 
-    public NotificationEntity() {}
+    public NotificationEntity() {
+    }
 
     public long getNotification_id() {
         return notification_id;

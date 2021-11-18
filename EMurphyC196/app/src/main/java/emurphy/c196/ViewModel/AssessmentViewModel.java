@@ -41,7 +41,7 @@ public class AssessmentViewModel extends AndroidViewModel {
         return assessmentRepository.getAllAssessments();
     }
 
-    public LiveData<List<AssessmentCourse>> getAllAssessmentCourses(){
+    public LiveData<List<AssessmentCourse>> getAllAssessmentCourses() {
         return assessmentRepository.getAllAssessmentCourses();
     }
 
@@ -49,7 +49,7 @@ public class AssessmentViewModel extends AndroidViewModel {
         return assessmentRepository.getAllAssessmentsForCourse(id);
     }
 
-    public LiveData<List<AssessmentEntity>> getAllAssessmentsForCourseLive(long id){
+    public LiveData<List<AssessmentEntity>> getAllAssessmentsForCourseLive(long id) {
         return assessmentRepository.getAllAssessmentsForCourseLive(id);
     }
 

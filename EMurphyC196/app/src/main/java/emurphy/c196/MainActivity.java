@@ -1,18 +1,13 @@
 package emurphy.c196;
 
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
-
 import emurphy.c196.databinding.ActivityMainBinding;
-
-import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,17 +29,17 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void gotoTermsList(View view){
+    public void gotoTermsList(View view) {
         Intent intent = new Intent(MainActivity.this, TermListActivity.class);
         startActivity(intent);
     }
 
-    public void gotoCoursesList(View view){
+    public void gotoCoursesList(View view) {
         Intent intent = new Intent(MainActivity.this, CourseListActivity.class);
         startActivity(intent);
     }
 
-    public void gotoAssessmentsList(View view){
+    public void gotoAssessmentsList(View view) {
         Intent intent = new Intent(MainActivity.this, AssessmentListActivity.class);
         startActivity(intent);
     }

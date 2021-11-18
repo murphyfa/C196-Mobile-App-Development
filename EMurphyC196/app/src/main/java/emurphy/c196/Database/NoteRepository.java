@@ -1,7 +1,6 @@
 package emurphy.c196.Database;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -45,7 +44,7 @@ public class NoteRepository {
         return noteDAO.getAllNotesForCourseLive(id);
     }
 
-    public CourseEntity getCourseById(long id){
+    public CourseEntity getCourseById(long id) {
         return courseDAO.getCourseById(id);
     }
 }

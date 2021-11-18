@@ -1,9 +1,9 @@
 package emurphy.c196;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +15,10 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.util.Pair;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,7 +40,7 @@ import emurphy.c196.ViewModel.CourseViewModel;
 import emurphy.c196.databinding.ActivityCourseEditorBinding;
 import kotlin.Triple;
 
-public class CourseEditorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class CourseEditorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
 
     private ActivityCourseEditorBinding binding;
     private Menu mOptionsMenu;
@@ -83,6 +83,12 @@ public class CourseEditorActivity extends AppCompatActivity implements DatePicke
         alertStartDate = findViewById(R.id.start_date_cb);
         alertEndDate = findViewById(R.id.end_date_cb);
 
+        Spinner spinner = findViewById(R.id.status_spinner);
+        ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(this, R.array.status_array, android.R.layout.simple_spinner_item);
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(statusAdapter);
+        spinner.setOnItemSelectedListener(this);
+
         courseViewModel = new ViewModelProvider(this).get(CourseViewModel.class);
 
         Intent intent = getIntent();
@@ -97,6 +103,7 @@ public class CourseEditorActivity extends AppCompatActivity implements DatePicke
             courseInstructorNameEditText.setText(courseEntity.getInstructor_name());
             courseInstructorPhoneEditText.setText(courseEntity.getInstructor_phone());
             courseInstructorEmailEditText.setText(courseEntity.getInstructor_email());
+            spinner.setSelection(statusAdapter.getPosition(courseEntity.getStatus()));
             alertStartDate.setChecked(courseEntity.getStart_notification_id() > 0);
             alertEndDate.setChecked(courseEntity.getEnd_notification_id() > 0);
         } else if (intent.hasExtra(EXTRA_TERM_ID)) {
@@ -131,8 +138,6 @@ public class CourseEditorActivity extends AppCompatActivity implements DatePicke
         AssessmentAdapter adapter = new AssessmentAdapter();
         binding.courseContent.assessmentListRecyclerView.setLayoutManager(layoutManager);
         binding.courseContent.assessmentListRecyclerView.setAdapter(adapter);
-        List<AssessmentEntity> test = courseViewModel.getAllAssessmentsForCourse(courseEntity.getCourse_id());
-        Log.wtf("test", "number of assessments found: " + test.size());
         courseViewModel.getAllAssessmentsForCourseLive(courseEntity.getCourse_id()).observe(this, assessmentEntities -> adapter.setExtended(assessmentEntities, courseEntity));
 
         adapter.setOnItemClickListener(assessment -> {
@@ -166,7 +171,6 @@ public class CourseEditorActivity extends AppCompatActivity implements DatePicke
         courseEntity.setTitle(courseTitleEditText.getText().toString());
         courseEntity.setStart_date(courseStartDateEditText.getText().toString());
         courseEntity.setEnd_date(courseEndDateEditText.getText().toString());
-        courseEntity.setStatus(courseEndDateEditText.getText().toString());
         courseEntity.setInstructor_name(courseInstructorNameEditText.getText().toString());
         courseEntity.setInstructor_phone(courseInstructorPhoneEditText.getText().toString());
         courseEntity.setInstructor_email(courseInstructorEmailEditText.getText().toString());
@@ -201,6 +205,7 @@ public class CourseEditorActivity extends AppCompatActivity implements DatePicke
             cancelAlert("course_end", courseEntity.getEnd_notification_id());
             courseEntity.setEnd_notification_id(0);
         }
+        courseViewModel.updateCourse(courseEntity);
     }
 
     private boolean deleteCourse() {
@@ -333,14 +338,40 @@ public class CourseEditorActivity extends AppCompatActivity implements DatePicke
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar calendar = Calendar.getInstance();
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, this, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
         String dateString = year + "-" + (month + 1) + "-" + dayOfMonth;
         switch (datePickerSelected) {
             case 0:
                 courseStartDateEditText.setText(dateString);
+                timePickerDialog.show();
                 break;
             case 1:
                 courseEndDateEditText.setText(dateString);
+                timePickerDialog.show();
                 break;
         }
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        switch (datePickerSelected) {
+            case 0:
+                courseStartDateEditText.setText(courseStartDateEditText.getText().toString() + " " + hourOfDay + ":" + minute + ":00");
+                break;
+            case 1:
+                courseEndDateEditText.setText(courseEndDateEditText.getText().toString() + " " + hourOfDay + ":" + minute + ":00");
+                break;
+        }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        courseEntity.setStatus(parent.getItemAtPosition(position).toString());
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

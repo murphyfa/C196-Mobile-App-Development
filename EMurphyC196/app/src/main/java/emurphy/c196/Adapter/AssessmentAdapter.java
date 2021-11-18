@@ -46,7 +46,7 @@ public class AssessmentAdapter extends RecyclerView.Adapter<AssessmentAdapter.As
         notifyDataSetChanged();
     }
 
-    public void setExtended(List<AssessmentEntity> assessments, CourseEntity course){
+    public void setExtended(List<AssessmentEntity> assessments, CourseEntity course) {
         this.assessments = assessments;
         this.course = course;
         notifyDataSetChanged();

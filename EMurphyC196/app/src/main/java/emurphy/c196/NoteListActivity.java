@@ -8,9 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-
 import emurphy.c196.Adapter.NoteAdapter;
 import emurphy.c196.Database.CourseEntity;
 import emurphy.c196.ViewModel.NoteViewModel;

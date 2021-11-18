@@ -55,9 +55,13 @@ public class AssessmentEntity {
         this.start_date = start_date;
     }
 
-    public String getEnd_date() { return end_date; }
+    public String getEnd_date() {
+        return end_date;
+    }
 
-    public void setEnd_date(String end_date) { this.end_date = end_date; }
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
 
     public String getType() {
         return type;

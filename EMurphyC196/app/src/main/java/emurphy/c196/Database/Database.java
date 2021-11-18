@@ -2,8 +2,6 @@ package emurphy.c196.Database;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-
 
 import androidx.annotation.NonNull;
 import androidx.room.Room;
@@ -18,17 +16,20 @@ public abstract class Database extends RoomDatabase {
     private static final Object LOCK = new Object();
 
     public abstract TermDAO termDAO();
+
     public abstract CourseDAO courseDAO();
+
     public abstract AssessmentDAO assessmentDAO();
+
     public abstract NoteDAO noteDAO();
+
     public abstract NotificationDAO notificationDAO();
 
-    public static Database getDbInstance(Context context){
-        if (dbInstance == null){
-            synchronized (LOCK){
-                if (dbInstance == null){
-                    context.deleteDatabase(DATABASE_NAME);
-                    Log.wtf("getDbInstance", "Deleting any existing database and recreating");
+    public static Database getDbInstance(Context context) {
+        if (dbInstance == null) {
+            synchronized (LOCK) {
+                if (dbInstance == null) {
+//                    context.deleteDatabase(DATABASE_NAME);
                     dbInstance = Room.databaseBuilder(context.getApplicationContext(), Database.class, DATABASE_NAME)
                             .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
@@ -42,19 +43,17 @@ public abstract class Database extends RoomDatabase {
 
     private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback() {
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db){
-            Log.wtf("onCreate", "Generating the database");
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsyncTask(dbInstance).execute();
+//            new PopulateDbAsyncTask(dbInstance).execute();
         }
     };
 
-    private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void> {
+    private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private TermDAO termDAO;
         private CourseDAO courseDAO;
 
-        private PopulateDbAsyncTask(Database db){
-            Log.wtf("PopulateDbAsyncTask", "Populating the database");
+        private PopulateDbAsyncTask(Database db) {
             termDAO = db.termDAO();
             courseDAO = db.courseDAO();
         }

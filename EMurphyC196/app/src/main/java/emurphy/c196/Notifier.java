@@ -9,17 +9,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Notifier extends BroadcastReceiver {
@@ -39,12 +32,6 @@ public class Notifier extends BroadcastReceiver {
         long targetId = intent.getLongExtra(NOTIFY_TARGET_ID, 0);
         String type = intent.getStringExtra(NOTIFY_TYPE);
 
-        Log.wtf("ReceivedData", "title " + title);
-        Log.wtf("ReceivedData", "text " + text);
-        Log.wtf("ReceivedData", "notificationId " + notificationId);
-        Log.wtf("ReceivedData", "targetId " + targetId);
-        Log.wtf("ReceivedData", "type " + type);
-
         Intent targetIntent;
         switch (type) {
             case "assessment": {
@@ -52,7 +39,7 @@ public class Notifier extends BroadcastReceiver {
                 targetIntent.putExtra(AssessmentEditorActivity.EXTRA_ASSESSMENT_ID, targetId);
                 break;
             }
-            case "course":{
+            case "course": {
                 targetIntent = new Intent(context, CourseEditorActivity.class);
                 targetIntent.putExtra(CourseEditorActivity.EXTRA_COURSE_ID, targetId);
                 break;

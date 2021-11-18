@@ -11,9 +11,10 @@ public class TermEntity {
     private String start_date;
     private String end_date;
 
-    public TermEntity() {}
+    public TermEntity() {
+    }
 
-    public TermEntity(String title, String start_date, String end_date){
+    public TermEntity(String title, String start_date, String end_date) {
         this.title = title;
         this.start_date = start_date;
         this.end_date = end_date;

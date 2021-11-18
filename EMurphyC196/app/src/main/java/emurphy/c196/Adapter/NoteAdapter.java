@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import emurphy.c196.Database.NoteEntity;
 import emurphy.c196.Database.CourseEntity;
+import emurphy.c196.Database.NoteEntity;
 import emurphy.c196.NoteEditorActivity;
 import emurphy.c196.R;
 import emurphy.c196.ViewModel.NoteViewModel;
@@ -24,7 +24,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     private OnItemClickListener listener;
     private NoteViewModel viewModel;
 
-    public NoteAdapter(NoteViewModel viewModel, CourseEntity course){
+    public NoteAdapter(NoteViewModel viewModel, CourseEntity course) {
         this.viewModel = viewModel;
         this.course = course;
     }
@@ -52,7 +52,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         holder.btnShare.setOnClickListener(v -> {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, currentNote.getTitle() + " : " +  currentNote.getText());
+            sendIntent.putExtra(Intent.EXTRA_TEXT, currentNote.getTitle() + " : " + currentNote.getText());
             sendIntent.setType("text/plain");
             Intent shareIntent = Intent.createChooser(sendIntent, null);
             v.getContext().startActivity(shareIntent);
@@ -75,7 +75,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         notifyDataSetChanged();
     }
 
-    public void setExtended(List<NoteEntity> notes, CourseEntity course){
+    public void setExtended(List<NoteEntity> notes, CourseEntity course) {
         this.notes = notes;
         this.course = course;
         notifyDataSetChanged();

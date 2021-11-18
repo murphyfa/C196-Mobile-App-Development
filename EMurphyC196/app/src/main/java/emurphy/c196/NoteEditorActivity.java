@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import emurphy.c196.Database.CourseEntity;
 import emurphy.c196.Database.NoteEntity;
 import emurphy.c196.ViewModel.NoteViewModel;
 import emurphy.c196.databinding.ActivityNoteEditorBinding;

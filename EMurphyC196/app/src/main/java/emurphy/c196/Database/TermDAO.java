@@ -8,7 +8,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-import java.util.Map;
 
 @Dao
 public interface TermDAO {

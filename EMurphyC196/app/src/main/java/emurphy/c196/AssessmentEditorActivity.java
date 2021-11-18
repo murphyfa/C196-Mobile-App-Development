@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,22 +24,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.TimeZone;
 
 import emurphy.c196.Database.AssessmentEntity;
 import emurphy.c196.Database.CourseEntity;
-import emurphy.c196.Database.NoteEntity;
 import emurphy.c196.Helper.DateHelper;
 import emurphy.c196.ViewModel.AssessmentViewModel;
 import emurphy.c196.databinding.ActivityAssessmentEditorBinding;
-import emurphy.c196.databinding.ActivityCourseEditorBinding;
-import kotlin.Triple;
 
 public class AssessmentEditorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
 
@@ -172,6 +164,7 @@ public class AssessmentEditorActivity extends AppCompatActivity implements DateP
             cancelAlert("assessment_end", assessmentEntity.getEnd_notification_id());
             assessmentEntity.setEnd_notification_id(0);
         }
+        assessmentViewModel.updateAssessment(assessmentEntity);
     }
 
     private void deleteAssessment() {
@@ -297,10 +290,6 @@ public class AssessmentEditorActivity extends AppCompatActivity implements DateP
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        Calendar calendar = Calendar.getInstance();
-        TimeZone tz = calendar.getTimeZone();
-        Log.wtf("timezone", "timezone displayname " + tz.getDisplayName());
-        Log.wtf("timezone", "timezone id " + tz.getID());
         switch (datePickerSelected) {
             case 0:
                 assessmentStartDateEditText.setText(assessmentStartDateEditText.getText().toString() + " " + hourOfDay + ":" + minute + ":00");
@@ -313,7 +302,6 @@ public class AssessmentEditorActivity extends AppCompatActivity implements DateP
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.wtf("onItemSelected", parent.getItemAtPosition(position).toString());
         assessmentEntity.setType(parent.getItemAtPosition(position).toString());
     }
 

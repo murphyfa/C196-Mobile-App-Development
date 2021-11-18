@@ -5,7 +5,8 @@ public class CourseTerm extends CourseEntity {
     private String term_start_date;
     private String term_end_date;
 
-    public CourseTerm() {}
+    public CourseTerm() {
+    }
 
     public String getTerm_title() {
         return term_title;

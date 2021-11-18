@@ -41,7 +41,6 @@
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
                 android:inputType="textMultiLine"
-                android:background="#eeeeee"
                 android:gravity="top|start"
                 android:padding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"

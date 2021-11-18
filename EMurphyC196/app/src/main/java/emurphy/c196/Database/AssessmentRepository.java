@@ -32,7 +32,7 @@ public class AssessmentRepository {
         return assessmentDAO.getAllAssessments();
     }
 
-    public LiveData<List<AssessmentCourse>> getAllAssessmentCourses(){
+    public LiveData<List<AssessmentCourse>> getAllAssessmentCourses() {
         return assessmentDAO.getAllAssessmentCourses();
     }
 
@@ -44,7 +44,7 @@ public class AssessmentRepository {
         return assessmentDAO.getAllAssessmentsForCourse(id);
     }
 
-    public LiveData<List<AssessmentEntity>> getAllAssessmentsForCourseLive(long id){
+    public LiveData<List<AssessmentEntity>> getAllAssessmentsForCourseLive(long id) {
         return assessmentDAO.getAllAssessmentsForCourseLive(id);
     }
 
